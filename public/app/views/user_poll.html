@@ -1,0 +1,106 @@
+
+<div class="container">
+  
+  <div class="col-md-12">
+    <h1>{{ poll.title }}</h1>
+  
+    <div ng-if="message">
+      <div class="alert alert-info" role="alert">
+        <p><b>System Message:</b> {{ message }}</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="col-md-6">
+    <canvas id="voteChart" width="80%" height="80%"></canvas>
+    <div id="voteChart-legend" class="chart-legend text-center"></div>
+  </div>
+
+  <div ng-if="checkVote()">
+    <div class="col-md-6">
+        <div class="jumbotron">
+          <h3><i class="fa fa-archive"></i> You voted</h3>
+          <p>Looks like you already voted on this poll. You can log in to view your activity and the Goat will keep a record of your votes.</p>
+        </div>
+        
+        <div class="jumbotron">
+          <h3><i class="fa fa-unlock-alt"></i> Log in</h3>
+          <p>Sorry, you already voted on this poll so you can't add a new answer.</p>
+          <a href="#/polls" class="btn btn-block btn-primary">All Polls</a>
+        </div>
+    </div>
+  </div>
+  
+  
+  <div ng-if="!checkVote()">
+    <div class="col-md-6">
+        <div class="jumbotron">
+          <h3><i class="fa fa-archive"></i> Place your vote</h3>
+            <form ng-submit="$parent.addVote()">
+                <div class="form-group">
+                    <select ng-model="$parent.myVote" name="my-vote" class="form-control" ng-options="option.option for option in poll.options">
+                      <option value="">-- select or add other --</option>
+                    </select>    
+                </div>
+                <input type="submit" id="submitVote" class="btn btn-block btn-danger" value="SUBMIT VOTE" />
+            </form>
+            <div ng-if="!myVote && poll.options[20]"><small><br><br>This poll has reached the maximum (20) answer options. To vote please choose from the list above.</small></div>
+        </div>
+        
+        <div ng-if="!myVote && !poll.options[20]">
+        <div class="jumbotron">
+          <h3><i class="fa fa-list-ol"></i> Add other</h3>
+          <p>Don't like the options above? Submit your answer below and add a new option to this poll.</p>
+            <form ng-submit="$parent.$parent.addOption()">
+                <div class="form-group">
+                  <input ng-model="$parent.$parent.newOption" name="my-option" type="text" class="form-control" placeholder="Add a new answer option...">
+                  <div ng-if="help">
+                    <div class="help-block text-danger"><small>{{ help }}</small></div>
+                  </div>
+                </div>
+                <input type="submit" id="submitOther" class="btn btn-block btn-primary" value="SUBMIT OTHER" />
+            </form>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+</div>
+  
+<div class="row" id="poll-table-banner">
+  <div class="container">
+    
+  <div class="col-md-12">
+    <div class="text-center">
+      <a href="https://twitter.com/intent/tweet?text=Vote on this poll - {{poll.title}}&url=https%3A%2F%2Ffcc-backend-votingapp-codemzy.c9users.io%2F%23%2Fpoll%2F{{poll.poll_id}}&hashtags=VoteGoat&via=codemzy"; target="_blank" class="btn btn-sm btn-info"><i class="fa fa-twitter"></i> Share on Twitter</a>
+    </div>
+  </div>
+  
+  <div class="col-md-12">
+    <h3>Results table.</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Options</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+        <tr ng-repeat="option in poll.options">
+          <td>{{ option.option }}</td>
+          <td>{{ option.votes }}</td>
+        </tr>
+    </table>
+  </div>
+  
+  <div ng-if="checkAuthor()" id="delete-message" class="text-center"><small>Lost your love for this poll? <a href="" ng-click="requestDelete()">Click here to delete</a>.</small></div>
+  <div ng-if="deleteRequest" class="alert alert-danger text-center">
+    <button type="button" class="close" ng-click="cancelDelete()" data-dismiss="alert"><i class="fa fa-times"></i></button>
+    <strong>Are you sure?</strong> <br>Once you delete this poll, you can't get it back.<br>
+    <a href="" ng-click="pollDelete()" class="btn btn-danger">Delete Poll</a>
+    <a href="" ng-click="cancelDelete()" class="btn btn-default">Cancel</a>
+  </div>
+
+
+</div>
+</div>

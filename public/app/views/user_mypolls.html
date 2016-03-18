@@ -1,0 +1,46 @@
+
+<div class="container">
+  
+  <div class="col-md-12">
+    <h1>My Polls.</h1>
+
+
+  <div class="col-md-4" ng-repeat="poll in polls">
+    <a href="#/poll/{{ poll.poll_id }}">
+      <div class="well poll-title-well text-center">
+        <i class="fa fa-5x fa-pie-chart"></i>
+        <h3>{{ titleLength(poll.title) }}</h3>
+      </div>
+    </a>
+  </div>
+  
+  <div ng-if="loading">
+      <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h3><i class="fa fa-refresh fa-5x fa-spin"></i><br>Loading Polls...</h3>
+            </div>
+      </div>
+  </div>
+  
+  <div ng-if="nopolls">
+      <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h3><i class="fa fa-exclamation-circle"></i> No polls found, get started by adding your first poll!</h3>
+            </div>
+      </div>
+  </div>
+
+  <div class="col-md-12 text-center text-success">
+    <h3>Get your vote on...</h3>
+  </div>
+  
+  <div class="col-md-12 bottom-div">
+    
+    <div class="btn-group btn-group-justified">
+        <a href="#/polls" class="btn btn-success btn-lg btn-getstarted"><i class="fa fa-bar-chart"></i> View Polls</a>
+        <a href="#/add/poll" class="btn btn-success btn-lg btn-getstarted"><i class="fa fa-plus-square"></i> Add Poll</a>
+    </div>
+    
+  </div>
+
+</div>

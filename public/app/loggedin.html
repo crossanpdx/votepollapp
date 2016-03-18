@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Poll Voting Application</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/public/css/style.css"/>
+</head>
+<body ng-app="PollVotingApp">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+   
+            <a class="navbar-brand">Poll Voting</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#/polls"><i class="fa fa-bar-chart"></i> Polls</a></li>
+            <li><a href="#/polls/my"><i class="fa fa-star"></i> My Polls</a></li>
+            <li><a href="#/add/poll"><i class="fa fa-plus-square"></i> Add Poll</a></li>
+          </ul>
+    
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/profile"><i class="fa fa-user"></i> Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+      
+    <div class="container-fluid" id="page-wrap">
+    <div class="row" id="page-contents">
+      
+      <div ng-view></div>
+
+    </div>
+    </div>
+
+    
+    <div class="container-fluid" id="footer">
+      <div class="container">
+        <div class="col-md-3 col-xs-6">
+          <h3>Navigate.</h3>
+          <p><a href="#/polls"><i class="fa fa-bar-chart"></i> Polls</a><br>
+          <a href="#/polls/my"><i class="fa fa-star"></i> My Polls</a><br>
+          <a href="#/add/poll"><i class="fa fa-plus-square"></i> Add Poll</a><br>
+          <a href="#/profile"><i class="fa fa-user"></i> Profile</a><br><br></p>
+        </div>
+     
+      </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Modules -->
+    <script src="/public/app/app_user.js"></script>
+    
+    <!-- Controllers -->
+    <script src="/public/app/controllers/PollsController.js"></script>
+    <script src="/public/app/controllers/User_PollController.js"></script>
+    <script src="/public/app/controllers/User_AddPollController.js"></script>
+    <script src="/public/app/controllers/User_MyPollsController.js"></script>
+    <script src="/public/app/controllers/ProfileController.js"></script>
+
+    <!-- Services -->
+    <script src="/public/app/services/polls.js"></script>
+    <script src="/public/app/services/user_poll.js"></script>
+    <script src="/public/app/services/user_add.js"></script>
+    <script src="/public/app/services/user.js"></script>
+    
+</body>
+</html>

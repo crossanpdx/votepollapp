@@ -1,0 +1,93 @@
+
+<div class="container">
+  
+  <div class="col-md-12">
+    <h1>{{ poll.title }}</h1>
+    
+    <div ng-if="!message">
+      <div class="alert alert-warning" role="alert">
+        <p class="text-muted"><b>Message from the VoteGoat:</b> You can view and vote on this poll, but you're not logged in, so you can't add options and your opinion doesn't matter to me. If you log in I might be nice. VoteGoat.</p>
+      </div>
+    </div>
+  
+    <div ng-if="message">
+      <div class="alert alert-info" role="alert">
+        <p><b>System Message:</b> {{ message }}</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="col-md-6">
+    <canvas id="voteChart" width="80%" height="80%"></canvas>
+    <div id="voteChart-legend" class="chart-legend text-center"></div>
+  </div>
+
+  <div ng-if="checkVote()">
+    <div class="col-md-6">
+        <div class="jumbotron">
+          <h3><i class="fa fa-archive"></i> You voted</h3>
+          <p>Looks like you already voted on this poll. You can log in to view your activity and the Goat will keep a record of your votes.</p>
+        </div>
+        
+        <div class="jumbotron">
+          <h3><i class="fa fa-unlock-alt"></i> Log in</h3>
+          <p>If you log in, you can add your own vote options to this poll, create your own polls and view your activity. It's totally free.</p>
+          <a href="#/login" class="btn btn-block btn-primary">Log In</a>
+        </div>
+    </div>
+  </div>
+  
+  
+  <div ng-if="!checkVote()">
+    <div class="col-md-6">
+        <div class="jumbotron">
+          <h3><i class="fa fa-archive"></i> Place your vote</h3>
+            <form ng-submit="$parent.addVote()">
+                <div class="form-group">
+                    <select ng-model="$parent.myVote" name="my-vote" class="form-control" ng-options="option.option for option in poll.options">
+                      <option value="">-- choose vote option --</option>
+                    </select>    
+                </div>
+                <input type="submit" id="submit" class="btn btn-block btn-danger" value="SUBMIT VOTE" />
+            </form>
+        </div>
+        
+        <div class="jumbotron">
+          <h3><i class="fa fa-unlock-alt"></i> Log in</h3>
+          <p>If you log in, you can add your own vote options to this poll, create your own polls and view your activity. It's totally free.</p>
+          <a href="#/login" class="btn btn-block btn-primary">Log In</a>
+        </div>
+    </div>
+  </div>
+  
+</div>
+  
+<div class="row" id="poll-table-banner">
+  <div class="container">
+    
+  <div class="col-md-12">
+    <div class="text-center">
+      <a href="https://twitter.com/intent/tweet?text=Vote on this poll - {{poll.title}}&url=https%3A%2F%2Ffcc-backend-votingapp-codemzy.c9users.io%2F%23%2Fpoll%2F{{poll.poll_id}}&hashtags=VoteGoat&via=codemzy"; target="_blank" class="btn btn-sm btn-info"><i class="fa fa-twitter"></i> Share on Twitter</a>
+    </div>
+  </div>
+  
+  <div class="col-md-12">
+    <h3>Results table.</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Options</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+        <tr ng-repeat="option in poll.options">
+          <td>{{ option.option }}</td>
+          <td>{{ option.votes }}</td>
+        </tr>
+    </table>
+  </div>
+
+
+</div>
+</div>

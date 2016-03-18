@@ -1,0 +1,130 @@
+body { 
+    background-color: #00664d;
+    padding-bottom: 70px; 
+    padding-top: 50px;
+}
+
+#page-wrap {
+    background-color: #ffffff;
+}
+
+a {
+    color: #008000;
+}
+
+a:hover {
+    color: #008000;
+}
+
+btn a {
+    color: #ffffff;
+}
+
+
+#brand-icon {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-inverse {
+    background-color: #008000;
+    color: #ffffff;
+    border-bottom: #008000;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    background-color: #008000;
+}
+
+.navbar-inverse .navbar-collapse {
+    border-color: #008000;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #008000;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #008000;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.img-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-lg {
+    margin: 5px;
+}
+
+.btn-getstarted {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bottom-div {
+    margin-bottom: 30px;
+}
+
+#home-banner {
+    background-color: #00664d;
+    color: #ffffff;
+}
+
+#poll-table-banner {
+    background-color: #eee;
+    color: #333;
+    padding: 15px;
+}
+
+#footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #ECF0F1;
+}
+
+#footer a {
+    color: #ffffff;
+}
+
+#footer a:hover {
+    color: #ffffff;
+}
+
+.poll-title-well {
+    height: 180px;
+}
+
+.chart-legend li span{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+ul.pie-legend {
+    list-style-type: none;
+    font-size: 22px;
+    -webkit-padding-start: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+ul.pie-legend li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#voteChart {
+    max-width: 100%;
+    height: auto!important;
+}
